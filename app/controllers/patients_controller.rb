@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   # GET /patients
@@ -24,6 +25,7 @@ class PatientsController < ApplicationController
   # POST /patients
   # POST /patients.json
   def create
+
     @patient = Patient.new(patient_params)
 
     respond_to do |format|
@@ -69,6 +71,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:patient_hash, :guid)
+      params.require("patient").permit(:date_of_birth, :first_name, :last_name, :zip, :state)
     end
 end
