@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient hash:</strong>
+  <%= @patient.patient_hash %>
+</p>
+
+<p>
+  <strong>Guid:</strong>
+  <%= @patient.guid %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>
