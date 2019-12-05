@@ -1,0 +1,78 @@
+<%= form_with(model: transaction, local: true) do |form| %>
+  <% if transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% transaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name, "Patient First Name" %>
+    <%= form.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= form.label :last_name, "Patient Last Name" %>
+    <%= form.text_field :last_name%>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_birth, "Patient Birth Date" %>
+    <%= form.text_field :date_of_birth%>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip, "Patient Zip" %>
+    <%= form.text_field :zip %>
+  </div>
+
+  <%= form.fields_for :transaction_types do |f| %>
+  <div class="field">
+    <%= f.label :fill, "Filled Prescription" %>
+    <%= f.check_box :fill %>
+  </div>
+
+  <div class="field">
+    <%= f.label :scripthero_fill, "ScriptHero fill" %>
+    <%= f.check_box :scripthero_fill %>
+  </div>
+
+  <div class="field">
+    <%= f.label :return_to_stock, "Return to Stock" %>
+    <%= f.check_box :return_to_stock %>
+  </div>
+
+  <div class="field">
+    <%= f.label :med_switch, "Medication Switched at Pharmacy" %>
+    <%= f.check_box :med_switch %>
+  </div>
+
+  <div class="field">
+    <%= f.label :new_patient, "New Patient" %>
+    <%= f.check_box :new_patient %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rx_transfer, "Rx Transferred to new pharmacy" %>
+    <%= f.check_box :rx_transfer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patient_cost, "Cost to Patient" %>
+    <%= f.check_box :patient_cost %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reimbursement, "Patient Reimbursement" %>
+    <%= f.check_box :reimbursement %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Add Transactions" %>
+  </div>
+<% end %>

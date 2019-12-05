@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mck_id: MyString
+  data_type: MyString
+
+two:
+  mck_id: MyString
+  data_type: MyString
