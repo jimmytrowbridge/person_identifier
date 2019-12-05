@@ -30,6 +30,7 @@ class TransactionsController < ApplicationController
   def create
     transaction = params["transaction"]
     patient = Patient.generate_mckid(transaction)
+    patient.save
 
     transaction["transaction_types"].each do |key, value|
       if value == "1"
