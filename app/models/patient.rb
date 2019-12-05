@@ -2,7 +2,7 @@ class Patient < ApplicationRecord
 
   def initialize(params)
     super 
-    self.guid = SecureRandom.uuid
+    self.guid = SecureRandom.uuid.upcase
   end
 
   def self.generate_mckid params
