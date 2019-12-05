@@ -4,11 +4,10 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.where(mck_id: params[:mck_id])
 
     respond_to do |format|
-      format.html {}
-      format.json { render json: @transactions }
+      format.html { @transactions = Transaction.all }
+      format.json { @transactions = Transaction.where(mck_id: params[:mck_id].to_s.upcase) }
     end
   end
 
@@ -34,7 +33,7 @@ class TransactionsController < ApplicationController
 
     transaction["transaction_types"].each do |key, value|
       if value == "1"
-        Transaction.create(mck_id: patient&.guid, data_type: key )
+        Transaction.create(mck_id: patient&.guid.upcase, data_type: key )
       end
     end
 
